@@ -1,18 +1,21 @@
 package com.jww.walkingtravelers.view.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentManager
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
+import com.jww.walkingtravelers.contract.MainFragmentCon
 import com.jww.walkingtravelers.databinding.FragmentMainBinding
+import com.jww.walkingtravelers.viewModel.MainFragmentVM
 
-class MainFragment : BaseFragment() {
+class MainFragment : BaseFragment(), MainFragmentCon {
 
     private lateinit var binding: FragmentMainBinding
-
 
     companion object {
         fun newInstance(): MainFragment {
@@ -32,26 +35,21 @@ class MainFragment : BaseFragment() {
             LayoutInflater.from(container!!.context),
             R.layout.fragment_main, container, false
         )
+        binding.vm = MainFragmentVM(this)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setTabLayout()
     }
 
-    private fun setTabLayout() {
-        val tabLayoutLabel = arrayListOf(
-            getString(R.string.tabL_Best),
-            getString(R.string.tabL_Snapshot),
-            getString(R.string.tabL_Favorites),
-            getString(R.string.tabL_MyPage)
-        )
-        val tabLayout = binding.tabL
-        tabLayout.apply {
-            tabLayoutLabel.forEach {
-                this.addTab(this.newTab().setText(it))
-            }
-        }
+    override fun getMainFragmentManager(): FragmentManager {
+        return this.fragmentManager!!
     }
+
+    override fun getMainFragmentContext(): Context {
+        return activity as Context
+    }
+
 }

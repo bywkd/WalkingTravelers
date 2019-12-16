@@ -1,6 +1,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="vm"
+            type="com.jww.walkingtravelers.viewModel.MainFragmentVM" />
+    </data>
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -42,7 +49,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/fl_home"
                     app:layout_constraintStart_toEndOf="@+id/fl_setting"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:tabGravity="center">
+                    app:setupWithViewPager="@{viewPagerFragmentMain}"
+                    app:tabMode="fixed">
 
                 </com.google.android.material.tabs.TabLayout>
 
@@ -65,54 +73,13 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_body"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager_fragment_main"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#ECFF00"
-                android:orientation="vertical"
-                android:weightSum="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cl_tabLayout">
-
-                <FrameLayout
-                    android:id="@+id/fl_top"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.3">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true" />
-                </FrameLayout>
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/fl_mid_01"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25" />
-
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/fl_mid_02"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.25" />
-
-                <FrameLayout
-                    android:id="@+id/fl_bottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="0.2">
-
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:adjustViewBounds="true" />
-                </FrameLayout>
-            </LinearLayout>
+                android:layout_height="match_parent"
+                app:addOnPageChangeListener="@{vm.pageChangeListener}"
+                app:setAdapter="@{vm.adapter}"
+                app:setCurrentItem="@{vm.currentPosition}" />
         </LinearLayout>
     </FrameLayout>
 </layout>
