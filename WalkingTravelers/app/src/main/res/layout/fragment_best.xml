@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/ll_body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ECFF00"
+        android:orientation="vertical"
+        android:weightSum="1">
 
-</LinearLayout>
+        <FrameLayout
+            android:id="@+id/fl_top"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true" />
+        </FrameLayout>
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/fl_mid_01"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/fl_mid_02"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.25" />
+
+        <FrameLayout
+            android:id="@+id/fl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.2">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true" />
+        </FrameLayout>
+    </LinearLayout>
+
+</layout>
