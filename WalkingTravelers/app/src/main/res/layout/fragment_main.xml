@@ -1,114 +1,119 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/cl_tabLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#00A8FF"
-            android:orientation="horizontal">
-
-            <FrameLayout
-                android:id="@+id/fl_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/tab_home_icon" />
-            </FrameLayout>
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_l"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintEnd_toStartOf="@+id/fl_home"
-                app:layout_constraintStart_toEndOf="@+id/fl_setting"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </com.google.android.material.tabs.TabLayout>
-
-            <FrameLayout
-                android:id="@+id/fl_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/tab_environment_icon" />
-            </FrameLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent">
 
         <LinearLayout
-            android:id="@+id/ll_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#ECFF00"
-            android:orientation="vertical"
-            android:weightSum="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cl_tabLayout">
+            android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@+id/fl_top"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_tabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.3">
+                android:layout_height="wrap_content"
+                android:background="#00A8FF"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="match_parent"
+                <FrameLayout
+                    android:id="@+id/fl_home"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
-            </FrameLayout>
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toStartOf="@+id/tab_l"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/fl_mid_01"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.25" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_home_icon" />
+                </FrameLayout>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/fl_mid_02"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.25" />
-
-            <FrameLayout
-                android:id="@+id/fl_bottom"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="0.2">
-
-                <ImageView
-                    android:layout_width="match_parent"
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tab_l"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true" />
-            </FrameLayout>
+                    app:layout_constraintBottom_toBottomOf="@+id/fl_home"
+                    app:layout_constraintEnd_toStartOf="@+id/fl_home"
+                    app:layout_constraintStart_toEndOf="@+id/fl_setting"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tabGravity="center">
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <FrameLayout
+                    android:id="@+id/fl_setting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tab_l"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/tab_environment_icon" />
+                </FrameLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#ECFF00"
+                android:orientation="vertical"
+                android:weightSum="1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_tabLayout">
+
+                <FrameLayout
+                    android:id="@+id/fl_top"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.3">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true" />
+                </FrameLayout>
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/fl_mid_01"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25" />
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/fl_mid_02"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.25" />
+
+                <FrameLayout
+                    android:id="@+id/fl_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.2">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true" />
+                </FrameLayout>
+            </LinearLayout>
         </LinearLayout>
+    </FrameLayout>
+</layout>
 
-
-    </LinearLayout>
-
-</FrameLayout>

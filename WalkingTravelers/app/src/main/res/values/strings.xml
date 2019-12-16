@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WalkingTravelers</string>
+
+    <!-- MainFragment TabLayout-->
+    <string name="tabL_Best">Best</string>
+    <string name="tabL_Snapshot">Snapshot</string>
+    <string name="tabL_Favorites">Favorites</string>
+    <string name="tabL_MyPage">MyPage</string>
+
 </resources>
