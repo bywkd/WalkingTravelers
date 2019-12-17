@@ -10,7 +10,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/main_background">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +22,6 @@
                 android:id="@+id/cl_tabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#00A8FF"
                 android:orientation="horizontal">
 
                 <FrameLayout
@@ -30,6 +30,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/tab_l"
                     app:layout_constraintEnd_toStartOf="@+id/tab_l"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -45,12 +46,13 @@
                     android:id="@+id/tab_l"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="@+id/fl_home"
                     app:layout_constraintEnd_toStartOf="@+id/fl_home"
                     app:layout_constraintStart_toEndOf="@+id/fl_setting"
                     app:layout_constraintTop_toTopOf="parent"
                     app:setupWithViewPager="@{viewPagerFragmentMain}"
-                    app:tabMode="fixed">
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@android:color/white"
+                    app:tabTextColor="@android:color/darker_gray">
 
                 </com.google.android.material.tabs.TabLayout>
 
@@ -60,6 +62,7 @@
                     android:layout_height="wrap_content"
                     android:clickable="true"
                     android:focusable="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/tab_l"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tab_l"
                     app:layout_constraintTop_toTopOf="parent">

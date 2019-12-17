@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.databinding.FragmentBestBinding
+import com.jww.walkingtravelers.viewModel.BestFragmentVM
 
 class BestFragment : BaseFragment() {
 
@@ -15,9 +16,9 @@ class BestFragment : BaseFragment() {
 
     fun newInstance(): BestFragment {
         val fragment = BestFragment()
-
         return fragment
     }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,11 +32,17 @@ class BestFragment : BaseFragment() {
             container,
             false
         )
+        binding.vm = BestFragmentVM(testImages)
+
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.vm!!.setImage()
     }
+
+
 }
