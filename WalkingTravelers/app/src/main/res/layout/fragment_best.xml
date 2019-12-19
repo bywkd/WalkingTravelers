@@ -32,11 +32,11 @@
         </FrameLayout>
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/fl_mid_01"
+            android:id="@+id/viewPager_mid_01"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.25"
-            android:background="#EC5F50"
+            android:background="@android:color/transparent"
             android:clipToPadding="false"
             android:gravity="start"
             android:paddingStart="120dp"
@@ -45,8 +45,15 @@
             app:setAdapter="@{vm.adapter}"
             app:setCurrentItem="@{vm.currentPosition}" />
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabl_mid_01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/FragmentBestTabStyle"
+            app:setupWithViewPager="@{vm.viewPager}" />
+
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/fl_mid_02"
+            android:id="@+id/viewPager_mid_02"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.25"

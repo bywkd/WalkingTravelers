@@ -32,8 +32,12 @@ class BestFragment : BaseFragment() {
             container,
             false
         )
-        binding.vm = BestFragmentVM(testImages)
-
+        binding.vm =
+            BestFragmentVM(testImages, testCategory, binding.viewPagerMid01, binding.tablMid01)
+//        val tab = binding.tablMid01
+//        val viewPager = binding.viewPagerMid01!!
+//
+//        tab.setupWithViewPager(viewPager,false)
 
         return binding.root
     }
@@ -42,6 +46,8 @@ class BestFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.vm!!.setImage()
+
+//        binding.tablMid01.setupWithViewPager(binding.flMid01,true)
     }
 
 

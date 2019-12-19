@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.Target
 
 
 object ImageViewBinding {
@@ -23,7 +24,8 @@ object ImageViewBinding {
     @JvmStatic
     @BindingAdapter("bind:loadGlideSrc")
     fun loadGlide(imgView: ImageView, resId: Int) {
-        Glide.with(imgView.context).load(resId).into(imgView)
+        Glide.with(imgView.context).load(resId).override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+            .into(imgView)
     }
 
     @JvmStatic

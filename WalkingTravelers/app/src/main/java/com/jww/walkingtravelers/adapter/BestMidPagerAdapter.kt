@@ -1,6 +1,5 @@
 package com.jww.walkingtravelers.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +9,15 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.databinding.ItemBestMidBinding
+import com.jww.walkingtravelers.viewModel.BestMidPagerAdapterVM
 
-class BestMidPagerAdapter : PagerAdapter() {
+class BestMidPagerAdapter : PagerAdapter {
     private var imgList: ArrayList<Int> = arrayListOf()
+    private var categoryList: ArrayList<Int>
+
+    constructor(testCategory: ArrayList<Int>) {
+        categoryList = testCategory
+    }
 
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {
@@ -20,12 +25,12 @@ class BestMidPagerAdapter : PagerAdapter() {
     }
 
     override fun getCount(): Int {
-        return (imgList.size * 100)
+        return (imgList.size)
+//        return (imgList.size * 100)
     }
 
     fun setImageList(imgList: ArrayList<Int>) {
         this.imgList = imgList
-        Log.d("Won", "image Size = ${imgList.size}")
         notifyDataSetChanged()
     }
 
@@ -36,6 +41,11 @@ class BestMidPagerAdapter : PagerAdapter() {
             container,
             false
         )
+        binding.vm = BestMidPagerAdapterVM()
+        binding.vm!!.apply {
+            this.setImage(imgList[position % imgList.size])
+            this.setCategory(categoryList[position % categoryList.size])
+        }
         (container as ViewPager).addView(binding.root)
         return binding.root
     }
@@ -47,4 +57,8 @@ class BestMidPagerAdapter : PagerAdapter() {
     override fun getPageWidth(position: Int): Float {
         return 1f
     }
+
+//    override fun getPageTitle(position: Int): CharSequence? {
+//        return "sdf2"
+//    }
 }
