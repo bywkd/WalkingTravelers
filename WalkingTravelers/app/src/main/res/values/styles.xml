@@ -12,4 +12,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="FragmentBestTabStyle" parent="Widget.Design.TabLayout">
+
+        <item name="tabIndicatorColor">@color/colorAccent</item>
+        <item name="tabBackground">@drawable/tab_selector</item>
+    </style>
+
 </resources>
