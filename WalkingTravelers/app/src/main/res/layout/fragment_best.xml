@@ -47,10 +47,11 @@
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabl_mid_01"
+            style="@style/FragmentBestTabStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/FragmentBestTabStyle"
-            app:setupWithViewPager="@{vm.viewPager}" />
+            app:tabGravity="center"
+            app:layoutManager="android.support.v7.widget.LinearLayoutManager" />
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager_mid_02"

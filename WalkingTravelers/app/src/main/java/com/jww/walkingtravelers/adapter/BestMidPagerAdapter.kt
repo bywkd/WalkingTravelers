@@ -25,8 +25,7 @@ class BestMidPagerAdapter : PagerAdapter {
     }
 
     override fun getCount(): Int {
-        return (imgList.size)
-//        return (imgList.size * 100)
+        return imgList.size
     }
 
     fun setImageList(imgList: ArrayList<Int>) {
@@ -61,4 +60,5 @@ class BestMidPagerAdapter : PagerAdapter {
 //    override fun getPageTitle(position: Int): CharSequence? {
 //        return "sdf2"
 //    }
+
 }
