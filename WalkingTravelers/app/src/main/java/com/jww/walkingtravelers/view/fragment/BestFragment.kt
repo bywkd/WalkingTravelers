@@ -33,22 +33,17 @@ class BestFragment : BaseFragment() {
             false
         )
         binding.vm =
-            BestFragmentVM(testImages, testCategory, binding.viewPagerMid01, binding.tablMid01)
-//        val tab = binding.tablMid01
-//        val viewPager = binding.viewPagerMid01!!
-//
-//        tab.setupWithViewPager(viewPager,false)
+            BestFragmentVM(testImages, testCategory)
+
+        binding.apply {
+            this.tablMid01.setupWithViewPager(binding.viewPagerMid01)
+        }
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.vm!!.setImage()
-
-//        binding.tablMid01.setupWithViewPager(binding.flMid01,true)
     }
-
-
 }
