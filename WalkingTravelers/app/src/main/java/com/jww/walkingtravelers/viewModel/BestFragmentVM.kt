@@ -3,23 +3,19 @@ package com.jww.walkingtravelers.viewModel
 import androidx.lifecycle.ViewModel
 import androidx.viewpager.widget.ViewPager
 import com.jww.walkingtravelers.adapter.BestMidPagerAdapter
+import com.jww.walkingtravelers.contract.BestFragmentCon
 
 class BestFragmentVM(
-    testImages: ArrayList<Int>,
-    testCategory: ArrayList<Int>
+    private val testImages: ArrayList<Int>,
+    testCategory: ArrayList<Int>,
+    private val contract: BestFragmentCon
 ) : ViewModel() {
 
     val adapter: BestMidPagerAdapter = BestMidPagerAdapter(testCategory)
-    private val testImages = testImages
     var currentPosition: Int = 0
 
     var pageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrollStateChanged(state: Int) {
-
-            if(state == ViewPager.SCROLL_STATE_IDLE)
-            {
-
-            }
         }
 
         override fun onPageScrolled(
@@ -30,17 +26,15 @@ class BestFragmentVM(
         }
 
         override fun onPageSelected(position: Int) {
-            currentPosition = when (position) {
-                0 -> adapter.count
-                adapter.count + 1 -> 1
-                else -> position - 1
-            }
+            currentPosition = position
+            contract.setPageChange(currentPosition)
         }
     }
 
     fun setImage() {
         adapter.setImageList(testImages)
-        currentPosition = testImages.size / 2
+        currentPosition = adapter.count / 2
+        contract.setPageChange(currentPosition)
     }
 
 }
