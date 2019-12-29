@@ -9,6 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.databinding.ItemBestMidBinding
+import com.jww.walkingtravelers.utils.Constants
 import com.jww.walkingtravelers.viewModel.BestMidPagerAdapterVM
 
 class BestMidPagerAdapter : PagerAdapter {
@@ -25,7 +26,7 @@ class BestMidPagerAdapter : PagerAdapter {
     }
 
     override fun getCount(): Int {
-        return imgList.size
+        return imgList.size * Constants.BEST_IMAGE_INFINITE_COUNT
     }
 
     fun setImageList(imgList: ArrayList<Int>) {
@@ -56,9 +57,4 @@ class BestMidPagerAdapter : PagerAdapter {
     override fun getPageWidth(position: Int): Float {
         return 1f
     }
-
-//    override fun getPageTitle(position: Int): CharSequence? {
-//        return "sdf2"
-//    }
-
 }
