@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
-import com.jww.walkingtravelers.databinding.FragmentFavoritesBinding
+import com.jww.walkingtravelers.databinding.FragmentCameraBinding
+import com.jww.walkingtravelers.viewModel.CameraFragmentVM
 
-class FavoritesFragment : BaseFragment() {
-    private lateinit var binding: FragmentFavoritesBinding
-    fun newInstance(): FavoritesFragment {
-        val fragment = FavoritesFragment()
+class CameraFragment : BaseFragment() {
+    private lateinit var binding: FragmentCameraBinding
+    fun newInstance(): CameraFragment {
+        val fragment = CameraFragment()
 
         return fragment
     }
@@ -25,10 +26,11 @@ class FavoritesFragment : BaseFragment() {
 
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(container!!.context),
-            R.layout.fragment_favorites,
+            R.layout.fragment_camera,
             container,
             false
         )
+        binding.vm = CameraFragmentVM()
 
         return binding.root
     }
