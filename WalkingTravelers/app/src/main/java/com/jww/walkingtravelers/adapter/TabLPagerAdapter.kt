@@ -5,7 +5,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.view.fragment.BestFragment
-import com.jww.walkingtravelers.view.fragment.FavoritesFragment
+import com.jww.walkingtravelers.view.fragment.CameraFragment
 import com.jww.walkingtravelers.view.fragment.MyPageFragment
 import com.jww.walkingtravelers.view.fragment.SnapshotFragment
 
@@ -35,7 +35,7 @@ class TabLPagerAdapter : FragmentStatePagerAdapter {
                 return (pageFragment[position] as SnapshotFragment)
             }
             2 -> {
-                return (pageFragment[position] as FavoritesFragment)
+                return (pageFragment[position] as CameraFragment)
             }
             3 -> {
                 return (pageFragment[position] as MyPageFragment)

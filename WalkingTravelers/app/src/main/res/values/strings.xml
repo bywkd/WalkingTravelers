@@ -4,7 +4,7 @@
     <!-- MainFragment TabLayout-->
     <string name="tabL_Best">Best</string>
     <string name="tabL_Snapshot">Snapshot</string>
-    <string name="tabL_Favorites">Favorites</string>
+    <string name="tabL_Camera">Camera</string>
     <string name="tabL_MyPage">MyPage</string>
 
 </resources>

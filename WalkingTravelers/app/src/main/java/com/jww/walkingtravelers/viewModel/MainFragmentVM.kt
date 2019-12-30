@@ -6,7 +6,7 @@ import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.adapter.TabLPagerAdapter
 import com.jww.walkingtravelers.contract.MainFragmentCon
 import com.jww.walkingtravelers.view.fragment.BestFragment
-import com.jww.walkingtravelers.view.fragment.FavoritesFragment
+import com.jww.walkingtravelers.view.fragment.CameraFragment
 import com.jww.walkingtravelers.view.fragment.MyPageFragment
 import com.jww.walkingtravelers.view.fragment.SnapshotFragment
 
@@ -14,13 +14,13 @@ class MainFragmentVM(contract: MainFragmentCon) : ViewModel() {
     private val tabLayoutLabel = arrayListOf(
         contract.getMainFragmentContext().getString(R.string.tabL_Best),
         contract.getMainFragmentContext().getString(R.string.tabL_Snapshot),
-        contract.getMainFragmentContext().getString(R.string.tabL_Favorites),
+        contract.getMainFragmentContext().getString(R.string.tabL_Camera),
         contract.getMainFragmentContext().getString(R.string.tabL_MyPage)
     )
     private var fragmentList = arrayListOf(
         BestFragment().newInstance(),
         SnapshotFragment().newInstance(),
-        FavoritesFragment().newInstance(),
+        CameraFragment().newInstance(),
         MyPageFragment().newInstance()
     )
     var currentPosition: Int = 0
