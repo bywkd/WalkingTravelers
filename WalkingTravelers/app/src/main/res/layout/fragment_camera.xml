@@ -98,7 +98,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#C300FF"
-                    android:minHeight="50dp" />
+                    android:minLines="2" />
             </LinearLayout>
 
 
