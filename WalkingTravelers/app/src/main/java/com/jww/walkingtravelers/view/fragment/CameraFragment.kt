@@ -1,6 +1,8 @@
 package com.jww.walkingtravelers.view.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,8 +32,13 @@ class CameraFragment : BaseFragment() {
             container,
             false
         )
-        binding.vm = CameraFragmentVM()
+        binding.vm = CameraFragmentVM(this.activity!!)
 
         return binding.root
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("Won","onActivityResult")
     }
 }
