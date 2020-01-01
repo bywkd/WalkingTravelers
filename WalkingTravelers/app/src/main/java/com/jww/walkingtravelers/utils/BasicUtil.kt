@@ -17,7 +17,6 @@ class BasicUtil {
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             intent.resolveActivity(activity.packageManager)?.let {
 
-
                 var photoFile: File? = null
                 try {
                     photoFile = createImageFile(activity)
@@ -34,10 +33,8 @@ class BasicUtil {
                         return imageFilePath
                     }
 
-
                 } catch (e: Exception) {
                     e.printStackTrace()
-
                 }
             }
             return ""
