@@ -1,15 +1,17 @@
 package com.jww.walkingtravelers.view.fragment
 
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.databinding.FragmentCameraBinding
+import com.jww.walkingtravelers.utils.Constants
 import com.jww.walkingtravelers.viewModel.CameraFragmentVM
 
 class CameraFragment : BaseFragment() {
@@ -32,13 +34,16 @@ class CameraFragment : BaseFragment() {
             container,
             false
         )
-        binding.vm = CameraFragmentVM(this.activity!!)
+        binding.vm = CameraFragmentVM(this)
 
         return binding.root
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        Log.d("Won","onActivityResult")
+        if (requestCode == Constants.REQUEST_CAPTURE_IMAGE && resultCode == RESULT_OK) {
+            Glide.with(binding.ivCamera.context).load(binding.vm!!.getImagePath())
+                .into(binding.ivCamera)
+        }
     }
 }
