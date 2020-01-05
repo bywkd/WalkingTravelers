@@ -12,6 +12,7 @@ import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.databinding.FragmentCameraBinding
 import com.jww.walkingtravelers.utils.Constants
+import com.jww.walkingtravelers.utils.ImageUtils
 import com.jww.walkingtravelers.viewModel.CameraFragmentVM
 
 class CameraFragment : BaseFragment() {
@@ -42,8 +43,17 @@ class CameraFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == Constants.REQUEST_CAPTURE_IMAGE && resultCode == RESULT_OK) {
-            Glide.with(binding.ivCamera.context).load(binding.vm!!.getImagePath())
-                .into(binding.ivCamera)
+            try {
+                val rotateBitmap = ImageUtils.getRotateImageBitmap(binding.vm!!.getImagePath())
+                rotateBitmap?.let {
+                    //                    binding.ivCamera.setImageBitmap(it)
+                    Glide.with(binding.ivCamera.context).load(it)
+                        .into(binding.ivCamera)
+                }
+
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 }

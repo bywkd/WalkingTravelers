@@ -19,7 +19,11 @@ class Constants {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
         )
 
-        val cameraPermission = arrayListOf(Manifest.permission.CAMERA)
+        val cameraPermission = arrayListOf(
+            Manifest.permission.CAMERA,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
         val detectPermission = arrayListOf(
             Manifest.permission.CAMERA,
             Manifest.permission.ACCESS_FINE_LOCATION,
