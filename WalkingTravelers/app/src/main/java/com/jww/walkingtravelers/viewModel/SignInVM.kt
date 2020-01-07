@@ -15,7 +15,7 @@ class SignInVM : ViewModel {
         contract.goMainActivity()
     }
 
-    fun onSignIn() {
-        contract.goSignInActivity()
+    fun onSignUp() {
+        contract.goSignUpActivity()
     }
 }

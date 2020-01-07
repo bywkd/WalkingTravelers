@@ -1,6 +1,7 @@
 package com.jww.walkingtravelers.view.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
@@ -17,8 +18,9 @@ class SignInActivity : BaseActivity(), SignInCon {
         finish()
     }
 
-    override fun goSignInActivity() {
-//        this.startActivity(this, )
+    override fun goSignUpActivity() {
+        val intent = Intent(this, SignUpActivity::class.java)
+        this.startActivity(intent)
     }
 
 
