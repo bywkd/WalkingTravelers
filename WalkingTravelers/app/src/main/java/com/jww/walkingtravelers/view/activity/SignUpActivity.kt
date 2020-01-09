@@ -5,7 +5,7 @@ import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseActivity
 import com.jww.walkingtravelers.databinding.ActivitySignUpBinding
-import com.jww.walkingtravelers.view.fragment.SignUp_01Fragment
+import com.jww.walkingtravelers.view.fragment.signUp.SignUp01Fragment
 
 class SignUpActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,7 +15,7 @@ class SignUpActivity : BaseActivity() {
             DataBindingUtil.setContentView<ActivitySignUpBinding>(this, R.layout.activity_sign_up)
 
         val fm = supportFragmentManager.beginTransaction()
-            .add(binding.flRoot.id, SignUp_01Fragment().newInstance())
+            .add(binding.flRoot.id, SignUp01Fragment().newInstance())
         fm.commit()
     }
 }
