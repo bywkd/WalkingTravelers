@@ -7,12 +7,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
+import com.jww.walkingtravelers.contract.SignUpCon
 import com.jww.walkingtravelers.databinding.FragmentSignUp01Binding
+import com.jww.walkingtravelers.view.activity.SignUpActivity
 import com.jww.walkingtravelers.viewModel.signUp.SignUp01VM
 
-class SignUp01Fragment : BaseFragment() {
+class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
+
 
     private lateinit var binding: FragmentSignUp01Binding
+    private lateinit var currentActivity: SignUpActivity
+
     fun newInstance(): SignUp01Fragment {
         val fragment = SignUp01Fragment()
         return fragment
@@ -28,7 +33,8 @@ class SignUp01Fragment : BaseFragment() {
             R.layout.fragment_sign_up_01, container,
             false
         )
-        binding.vm = SignUp01VM(this.context!!)
+        binding.vm = SignUp01VM(this.context!!, this)
+        currentActivity = activity as SignUpActivity
         return binding.root
     }
 
@@ -36,4 +42,13 @@ class SignUp01Fragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
     }
+
+    override fun onNext() {
+        currentActivity.goSignUp02Fragment()
+    }
+
+    override fun onCancel() {
+        currentActivity.finish()
+    }
+
 }
