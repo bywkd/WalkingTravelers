@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.google.firebase.auth.FirebaseAuth
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.contract.SignUpCon
@@ -19,7 +20,7 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
     private lateinit var binding: FragmentSignUp02Binding
     private lateinit var currentActivity: SignUpActivity
 
-    fun newInstance(): SignUp02Fragment {
+    fun newInstance(auth: FirebaseAuth): SignUp02Fragment {
         val fragment = SignUp02Fragment()
         return fragment
     }
@@ -35,8 +36,8 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
             container,
             false
         )
-        binding.vm = SignUp02VM(this.context!!, this)
         currentActivity = activity as SignUpActivity
+        binding.vm = SignUp02VM(this.context!!, this, currentActivity.getAuth())
         return binding.root
     }
 
@@ -44,12 +45,22 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
         super.onViewCreated(view, savedInstanceState)
     }
 
-    override fun onComplete() {
-        currentActivity.setResult(RESULT_OK)
-        currentActivity.finish()
-    }
 
     override fun onBefore() {
         currentActivity.onBackPressed()
     }
+
+    override fun onComplete() {
+
+        binding.vm?.let {
+            it.requestEmailSignUp(currentActivity.email.get()!!, currentActivity.password.get()!!)
+        }
+
+    }
+
+    override fun onSignUpComplete() {
+        currentActivity.setResult(RESULT_OK)
+        currentActivity.finish()
+    }
+
 }

@@ -2,6 +2,7 @@ package com.jww.walkingtravelers.view.activity
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.databinding.ObservableField
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.jww.walkingtravelers.R
@@ -14,13 +15,20 @@ import com.jww.walkingtravelers.view.fragment.signUp.SignUp02Fragment
 class SignUpActivity : BaseActivity(), SignUpCon {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var fm: FragmentManager
+    val email: ObservableField<String> = ObservableField()
+    val password:ObservableField<String> = ObservableField()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding =
             DataBindingUtil.setContentView<ActivitySignUpBinding>(this, R.layout.activity_sign_up)
         fm = supportFragmentManager
+        email.set("")
+        password.set("")
         goSighUp01Fragment()
+
     }
 
     private fun getFm(): FragmentTransaction = fm.beginTransaction()
@@ -30,7 +38,9 @@ class SignUpActivity : BaseActivity(), SignUpCon {
     }
 
     fun goSignUp02Fragment() {
-        getFm().add(binding.flRoot.id, SignUp02Fragment().newInstance()).addToBackStack(null)
-            .commit()
+        getFm().add(binding.flRoot.id, SignUp02Fragment().newInstance(getAuth()))
+            .addToBackStack(null).commit()
     }
+
+
 }
