@@ -23,6 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="로그인할 이메일을 적어주세요"
+            android:text="@{vm.email}"
             app:layout_constraintEnd_toStartOf="@+id/btn_check_email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

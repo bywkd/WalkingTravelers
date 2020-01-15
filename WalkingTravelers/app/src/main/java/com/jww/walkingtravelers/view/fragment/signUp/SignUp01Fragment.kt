@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
@@ -49,6 +50,17 @@ class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
 
     override fun onCancel() {
         currentActivity.finish()
+    }
+
+    /*이메일 중복 검사 결과*/
+    override fun resultEmail(email: String, errorMessage: String) {
+        if (email.isNotEmpty()) {
+            /*이메일 사용 가능*/
+        } else if (errorMessage.isNotEmpty()) {
+            /*이메일 사용 불가능*/
+            Toast.makeText(currentActivity, errorMessage, Toast.LENGTH_SHORT).show()
+        }
+
     }
 
 }

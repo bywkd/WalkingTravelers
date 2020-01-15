@@ -104,5 +104,6 @@ class SignUp02VM : ViewModel {
                 Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 }
