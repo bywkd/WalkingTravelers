@@ -16,7 +16,8 @@ class SignUpActivity : BaseActivity(), SignUpCon {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var fm: FragmentManager
     val email: ObservableField<String> = ObservableField()
-    val password:ObservableField<String> = ObservableField()
+    val password: ObservableField<String> = ObservableField()
+    val gender: ObservableField<String> = ObservableField()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,6 +28,7 @@ class SignUpActivity : BaseActivity(), SignUpCon {
         fm = supportFragmentManager
         email.set("")
         password.set("")
+        gender.set("")
         goSighUp01Fragment()
 
     }

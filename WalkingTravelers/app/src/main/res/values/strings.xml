@@ -7,4 +7,18 @@
     <string name="tabL_Camera">Camera</string>
     <string name="tabL_MyPage">MyPage</string>
 
+
+
+    <!--CA0301 회원가입 페이지-->
+    <string name="sign_up_notFormatEmail">잘못된 형식의 이메일 입니다.</string>
+    <string name="sign_up_notFoundEmail">이메일을 찾을수 없습니다.</string>
+    <string name="sign_up_alreadyRegisteredEmail">이미 등록 된 이메일 입니다.</string>
+    <string name="sign_up_emailAvailableEmail">이메일을 사용할 수 있습니다.</string>
+    <string name="sign_up_pw_PatternError">영문 대소문자, 숫자, 특수문자를 혼합하여 최소 8자 이상 입력해 주세요</string>
+    <string name="sign_up_pw_passwordsDoNotMatch">비밀번호가 일치 하지 않습니다.</string>
+    <string name="sign_up_birth_notFormatBirth">잘못된 형식입니다. 다시 입력해주세요(예:980101)</string>
+
+    <string name="check_email_errorType_notFormat_Email">The email address is badly formatted.</string>
+    <string name="check_email_errorType_notFound_Email">Not found Email</string>
+    <string name="check_email_errorType_notFound_identifier">There is no user record corresponding to this identifier. The user may have been deleted.</string>
 </resources>
