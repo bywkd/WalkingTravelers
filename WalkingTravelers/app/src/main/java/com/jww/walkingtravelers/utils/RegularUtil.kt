@@ -6,8 +6,8 @@ import java.util.regex.Pattern
 class RegularUtil {
     companion object {
         // 이메일 정규식
-        val VALID_EMAIL_ADDRESS_REGEX: Pattern =
-            Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE)
+        private val VALID_EMAIL_ADDRESS_REGEX: Pattern =
+            Pattern.compile("^[A-z0-9._%+-]+@[A-z0-9.-]+\\.[A-z]+$", Pattern.CASE_INSENSITIVE)
 
         // 이메일 검사
         fun validateEmail(emailStr: String): Boolean {

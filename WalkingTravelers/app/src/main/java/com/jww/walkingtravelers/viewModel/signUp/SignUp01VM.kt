@@ -41,7 +41,7 @@ class SignUp01VM : ViewModel {
                 emailDuplicateCheck(resultEmail)
             } else {
                 resultEmail = ""
-                errorMessage = "~~~~~"
+                errorMessage = "이메일 형식이 맞지 않습니다."
                 contract.resultEmail(resultEmail, errorMessage)
             }
 
@@ -50,11 +50,19 @@ class SignUp01VM : ViewModel {
 
     /*이메일 중복 검사 요청*/
     private fun emailDuplicateCheck(email: String) {
+        Log.d("Won","auth = $auth")
         auth.fetchSignInMethodsForEmail(email)
             .addOnSuccessListener { result ->
                 val signInMethods = result.signInMethods
+                Log.d("Won", "signInMethods = ${signInMethods}")
                 signInMethods?.let {
-                    this.checkEmail(it, email)
+                    if (it.isNotEmpty()) {
+                        this.checkEmail(it, email)
+                    }else{
+                        /*전자 메일이 없는 경우*/
+                        /*전자메일 리스트에 없어서 아무 메시지가 없는건지 목록 리스트가 0이라서인지 확인 해야함*/
+                    }
+
                 }
             }
             .addOnFailureListener { exception ->
@@ -82,8 +90,8 @@ class SignUp01VM : ViewModel {
                 /*잘못된 형식의 이메일*/
                 errorMessage = context.getString(R.string.sign_up_notFormatEmail)
             } else {
-                errorMessage = "알수 없는 에러 메시지 = ${this.toString()}"
-                Toast.makeText(context, "알수 없는 에러 메시지 = ${this.toString()}", Toast.LENGTH_SHORT)
+                errorMessage = "알수 없는 에러 메시지 = ${messageList.toString()}"
+                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT)
                     .show()/*알수 없는 에러*/
             }
             contract.resultEmail(email, errorMessage)

@@ -4,12 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 
 open class BaseActivity : AppCompatActivity() {
-    private lateinit var mAuth: FirebaseAuth
+    private var mAuth: FirebaseAuth? = null
 
     override fun onStart() {
         super.onStart()
-        mAuth = FirebaseAuth.getInstance()
     }
 
-    fun getAuth() = mAuth
+    fun getAuth(): FirebaseAuth {
+        mAuth?.let {
+            return it
+        } ?: let {
+            mAuth = FirebaseAuth.getInstance()
+            return mAuth!!
+        }
+    }
 }

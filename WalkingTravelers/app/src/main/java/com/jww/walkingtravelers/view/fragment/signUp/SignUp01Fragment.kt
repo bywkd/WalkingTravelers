@@ -29,13 +29,14 @@ class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        currentActivity = activity as SignUpActivity
         binding = DataBindingUtil.inflate(
             LayoutInflater.from(container!!.context),
             R.layout.fragment_sign_up_01, container,
             false
         )
-        binding.vm = SignUp01VM(this.context!!, this)
-        currentActivity = activity as SignUpActivity
+        binding.vm = SignUp01VM(this.context!!, this, currentActivity.getAuth())
+
         return binding.root
     }
 
