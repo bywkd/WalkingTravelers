@@ -53,7 +53,7 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
     override fun onComplete() {
 
         binding.vm?.let {
-            it.requestEmailSignUp(currentActivity.email.get()!!, currentActivity.password.get()!!)
+//            it.requestEmailSignUp(currentActivity.email.get()!!, currentActivity.password.get()!!)
         }
 
     }

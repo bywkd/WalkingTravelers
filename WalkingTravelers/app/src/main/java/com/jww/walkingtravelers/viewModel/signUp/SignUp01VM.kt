@@ -50,7 +50,7 @@ class SignUp01VM : ViewModel {
 
     /*이메일 중복 검사 요청*/
     private fun emailDuplicateCheck(email: String) {
-        Log.d("Won","auth = $auth")
+        Log.d("Won", "auth = $auth")
         auth.fetchSignInMethodsForEmail(email)
             .addOnSuccessListener { result ->
                 val signInMethods = result.signInMethods
@@ -58,9 +58,10 @@ class SignUp01VM : ViewModel {
                 signInMethods?.let {
                     if (it.isNotEmpty()) {
                         this.checkEmail(it, email)
-                    }else{
+                    } else {
                         /*전자 메일이 없는 경우*/
                         /*전자메일 리스트에 없어서 아무 메시지가 없는건지 목록 리스트가 0이라서인지 확인 해야함*/
+                        contract.resultEmail(email, "")
                     }
 
                 }

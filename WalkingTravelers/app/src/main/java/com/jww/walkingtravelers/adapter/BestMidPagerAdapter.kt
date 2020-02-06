@@ -9,7 +9,7 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.databinding.ItemBestMidBinding
-import com.jww.walkingtravelers.utils.Constants
+import com.jww.walkingtravelers.constants.Constants
 import com.jww.walkingtravelers.viewModel.BestMidPagerAdapterVM
 
 class BestMidPagerAdapter : PagerAdapter {

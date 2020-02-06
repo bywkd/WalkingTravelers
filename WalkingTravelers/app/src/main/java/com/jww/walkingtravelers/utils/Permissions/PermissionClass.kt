@@ -5,7 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.jww.walkingtravelers.utils.Constants
+import com.jww.walkingtravelers.constants.Constants
 
 class PermissionClass() : AppCompatActivity(),
     PermissionCon {

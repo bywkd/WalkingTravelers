@@ -1,4 +1,4 @@
-package com.jww.walkingtravelers.utils
+package com.jww.walkingtravelers.constants
 
 import android.Manifest
 
