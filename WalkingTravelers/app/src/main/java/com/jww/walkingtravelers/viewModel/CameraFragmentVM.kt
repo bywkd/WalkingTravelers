@@ -4,7 +4,7 @@ import android.content.Intent
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import com.jww.walkingtravelers.utils.BasicUtil
-import com.jww.walkingtravelers.utils.Constants
+import com.jww.walkingtravelers.constants.Constants
 import com.jww.walkingtravelers.utils.Permissions.PermissionClass
 
 class CameraFragmentVM : ViewModel {

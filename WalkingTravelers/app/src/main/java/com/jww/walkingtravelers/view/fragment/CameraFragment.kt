@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.databinding.FragmentCameraBinding
-import com.jww.walkingtravelers.utils.Constants
+import com.jww.walkingtravelers.constants.Constants
 import com.jww.walkingtravelers.utils.ImageUtils
 import com.jww.walkingtravelers.viewModel.CameraFragmentVM
 

@@ -2,7 +2,6 @@ package com.jww.walkingtravelers.view.activity
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.ObservableField
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.jww.walkingtravelers.R
@@ -15,9 +14,17 @@ import com.jww.walkingtravelers.view.fragment.signUp.SignUp02Fragment
 class SignUpActivity : BaseActivity(), SignUpCon {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var fm: FragmentManager
-    val email: ObservableField<String> = ObservableField()
-    val password: ObservableField<String> = ObservableField()
-    val gender: ObservableField<String> = ObservableField()
+
+    enum class GENDER {
+        MEN, WOMEN
+    }
+
+    var email: String = ""
+    //    val password: ObservableField<String> = ObservableField()
+    var gender: GENDER = GENDER.MEN
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,9 +33,9 @@ class SignUpActivity : BaseActivity(), SignUpCon {
         binding =
             DataBindingUtil.setContentView<ActivitySignUpBinding>(this, R.layout.activity_sign_up)
         fm = supportFragmentManager
-        email.set("")
-        password.set("")
-        gender.set("")
+//        email.set("")
+//        password.set("")
+//        gender.set("")
         goSighUp01Fragment()
 
     }
