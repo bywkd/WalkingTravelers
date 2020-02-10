@@ -51,11 +51,12 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
     }
 
     override fun onComplete() {
+        binding.vm?.requestEmailSignUp(currentActivity.email)
+    }
 
-        binding.vm?.let {
-//            it.requestEmailSignUp(currentActivity.email.get()!!, currentActivity.password.get()!!)
-        }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        currentActivity.isEmail = false
     }
 
     override fun onSignUpComplete() {

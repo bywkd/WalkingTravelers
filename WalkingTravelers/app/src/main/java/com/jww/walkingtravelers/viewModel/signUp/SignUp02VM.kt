@@ -3,6 +3,7 @@ package com.jww.walkingtravelers.viewModel.signUp
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -83,7 +84,7 @@ class SignUp02VM : ViewModel {
         }
 
         if (!checkPasswordCheck) {
-            Toast.makeText(context, "비밀번호 형식이 틀렸습니다.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "비밀번호 확인 형식이 틀렸습니다.", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -94,16 +95,19 @@ class SignUp02VM : ViewModel {
         }
     }
 
-    fun requestEmailSignUp(email: String, password: String) {
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful) {
-                val user = auth.currentUser
-                contract.onSignUpComplete()
+    fun requestEmailSignUp(email: String) {
+        auth.createUserWithEmailAndPassword(email, password.get().toString())
+            .addOnCompleteListener {
+                if (it.isSuccessful) {
+                    val user = auth.currentUser
+                    user?.let {
+                        Log.d("Won", "user = ${it.email}")
+                    }
+                    contract.onSignUpComplete()
 
-            } else {
-                Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                }
             }
-        }
-
     }
 }

@@ -50,20 +50,13 @@ class SignUp01VM : ViewModel {
 
     /*이메일 중복 검사 요청*/
     private fun emailDuplicateCheck(email: String) {
-        Log.d("Won", "auth = $auth")
+        /*이메일 사용자의 로그인 방식 검사
+        * 이방식으로 현제 사용자 아이디 중복 검사를 한다. 아무 것도 없으면 같은 아이디 사용자 가 없다는 뜻*/
         auth.fetchSignInMethodsForEmail(email)
             .addOnSuccessListener { result ->
                 val signInMethods = result.signInMethods
-                Log.d("Won", "signInMethods = ${signInMethods}")
                 signInMethods?.let {
-                    if (it.isNotEmpty()) {
-                        this.checkEmail(it, email)
-                    } else {
-                        /*전자 메일이 없는 경우*/
-                        /*전자메일 리스트에 없어서 아무 메시지가 없는건지 목록 리스트가 0이라서인지 확인 해야함*/
-                        contract.resultEmail(email, "")
-                    }
-
+                    checkEmail(it, email)
                 }
             }
             .addOnFailureListener { exception ->
@@ -74,28 +67,35 @@ class SignUp01VM : ViewModel {
     }
 
     private fun checkEmail(messageList: MutableList<String>, email: String) {
-        with(messageList)
-        {
-            var errorMessage: String = ""
-            if (this.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)) {
-                /*이미 등록된 이메일*/
-                errorMessage = context.getString(R.string.sign_up_alreadyRegisteredEmail)
-            } else if (this.contains(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD)) {
-                /*이메일 링크 */
+
+        var errorMessage: String = ""
+        /*해당 아이디가 없어서  가입 할때 비밀번호 인지 링크인지 모름*/
+//        if (messageList.isEmpty())
+        /*가입된 아이디 가 있어 해당아이디의 가입 타입을 출력*/
+        if (messageList.isNotEmpty()) {
+            with(messageList)
+            {
+                if (this.contains(EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD)) {
+                    /*이미 등록된 이메일*/
+                    errorMessage = context.getString(R.string.sign_up_alreadyRegisteredEmail)
+                } else if (this.contains(EmailAuthProvider.EMAIL_LINK_SIGN_IN_METHOD)) {
+                    /*이메일 링크 */
 //                EMAIL_LINK_SIGN_IN_METHOD
-                errorMessage = context.getString(R.string.sign_up_alreadyRegisteredEmail)
-            } else if (this.contains(context.getString(R.string.sign_up_emailAvailableEmail))) {
-                /*사용할수 있는 이메일*/
-                errorMessage = ""
-            } else if (this.contains(context.getString(R.string.check_email_errorType_notFormat_Email))) {
-                /*잘못된 형식의 이메일*/
-                errorMessage = context.getString(R.string.sign_up_notFormatEmail)
-            } else {
-                errorMessage = "알수 없는 에러 메시지 = ${messageList.toString()}"
-                Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT)
-                    .show()/*알수 없는 에러*/
+                    errorMessage = context.getString(R.string.sign_up_alreadyRegisteredEmail)
+                } else if (this.contains(context.getString(R.string.sign_up_emailAvailableEmail))) {
+                    /*사용할수 있는 이메일*/
+                    errorMessage = ""
+                } else if (this.contains(context.getString(R.string.check_email_errorType_notFormat_Email))) {
+                    /*잘못된 형식의 이메일*/
+                    errorMessage = context.getString(R.string.sign_up_notFormatEmail)
+                } else {
+                    errorMessage = "알수 없는 에러 메시지 = ${messageList.toString()}"
+                    Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT)
+                        .show()/*알수 없는 에러*/
+                }
             }
-            contract.resultEmail(email, errorMessage)
         }
+        contract.resultEmail(email, errorMessage)
+
     }
 }

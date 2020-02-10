@@ -38,7 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@{vm.password}"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={vm.password}"
                 textBind:textWatcher="@{vm.passwordWatcher}" />
         </LinearLayout>
 
@@ -61,7 +63,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@{vm.checkPassword}"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={vm.checkPassword}"
                 textBind:textWatcher="@{vm.checkPasswordWatcher}" />
 
         </LinearLayout>
