@@ -14,6 +14,7 @@ import com.jww.walkingtravelers.view.fragment.signUp.SignUp02Fragment
 class SignUpActivity : BaseActivity(), SignUpCon {
     private lateinit var binding: ActivitySignUpBinding
     private lateinit var fm: FragmentManager
+    var isEmail: Boolean = false
 
     enum class GENDER {
         MEN, WOMEN
@@ -33,9 +34,6 @@ class SignUpActivity : BaseActivity(), SignUpCon {
         binding =
             DataBindingUtil.setContentView<ActivitySignUpBinding>(this, R.layout.activity_sign_up)
         fm = supportFragmentManager
-//        email.set("")
-//        password.set("")
-//        gender.set("")
         goSighUp01Fragment()
 
     }

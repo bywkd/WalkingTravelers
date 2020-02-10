@@ -18,7 +18,7 @@ class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
 
     private lateinit var binding: FragmentSignUp01Binding
     private lateinit var currentActivity: SignUpActivity
-    private var isEmail: Boolean = false
+
 
     fun newInstance(): SignUp01Fragment {
         val fragment = SignUp01Fragment()
@@ -47,7 +47,7 @@ class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
     }
 
     override fun onNext() {
-        if (isEmail && currentActivity.email.isNotEmpty()) {
+        if (currentActivity.isEmail && currentActivity.email.isNotEmpty()) {
             currentActivity.goSignUp02Fragment()
         } else {
             Toast.makeText(currentActivity, "이메일 중복 검사를 해주세요", Toast.LENGTH_SHORT).show()
@@ -60,19 +60,21 @@ class SignUp01Fragment : BaseFragment(), SignUpCon.SignUp01Con {
 
     /*이메일 중복 검사 결과*/
     override fun resultEmail(email: String, errorMessage: String) {
-        if (email.isNotEmpty()) {
+        if (errorMessage.isEmpty()) {
             /*이메일 사용 가능*/
-            isEmail = true
             currentActivity.apply {
+                this.isEmail = true
                 this.email = email
                 this.year = binding.dpBirthDay.year
                 this.month = binding.dpBirthDay.month + 1
                 this.day = binding.dpBirthDay.dayOfMonth
                 checkGender()
             }
-        } else if (errorMessage.isNotEmpty()) {
+            Toast.makeText(currentActivity, "사용이 가능한 이메일 입니다.", Toast.LENGTH_SHORT).show()
+        } else {
             /*이메일 사용 불가능*/
             currentActivity.email = ""
+            currentActivity.isEmail = false
             Toast.makeText(currentActivity, errorMessage, Toast.LENGTH_SHORT).show()
         }
     }
