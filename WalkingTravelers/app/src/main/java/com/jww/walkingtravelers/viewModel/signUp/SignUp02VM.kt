@@ -3,7 +3,6 @@ package com.jww.walkingtravelers.viewModel.signUp
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
@@ -32,7 +31,6 @@ class SignUp02VM : ViewModel {
                     false
                 }
             }
-
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -52,7 +50,6 @@ class SignUp02VM : ViewModel {
                     false
                 }
             }
-
         }
 
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -60,7 +57,6 @@ class SignUp02VM : ViewModel {
 
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
         }
-
     }
 
     constructor(
@@ -100,11 +96,9 @@ class SignUp02VM : ViewModel {
             .addOnCompleteListener {
                 if (it.isSuccessful) {
                     val user = auth.currentUser
-                    user?.let {
-                        Log.d("Won", "user = ${it.email}")
+                    user?.let { userInfo ->
+                        contract.onSignUpComplete(userInfo)
                     }
-                    contract.onSignUpComplete()
-
                 } else {
                     Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
