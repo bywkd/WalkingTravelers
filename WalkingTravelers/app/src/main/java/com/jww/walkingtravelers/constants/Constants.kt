@@ -10,6 +10,8 @@ class Constants {
         const val REQUEST_CAPTURE_IMAGE: Int = 8000
         const val REQUEST_PERMISSION: Int = 8999
 
+        /*Activity request code*/
+        const val REQUEST_ACTIVITY_SIGN_UP: Int = 6000
 
         /*퍼미션*/
 

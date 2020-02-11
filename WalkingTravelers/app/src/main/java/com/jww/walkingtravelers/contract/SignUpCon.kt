@@ -1,5 +1,7 @@
 package com.jww.walkingtravelers.contract
 
+import com.google.firebase.auth.FirebaseUser
+
 interface SignUpCon {
 
     interface SignUp01Con {
@@ -11,6 +13,6 @@ interface SignUpCon {
     interface SignUp02Con {
         fun onComplete()
         fun onBefore()
-        fun onSignUpComplete()
+        fun onSignUpComplete(user: FirebaseUser)
     }
 }

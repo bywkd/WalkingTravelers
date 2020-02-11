@@ -6,8 +6,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseActivity
+import com.jww.walkingtravelers.constants.Constants
 import com.jww.walkingtravelers.contract.SignInCon
 import com.jww.walkingtravelers.databinding.ActivitySignInBinding
+import com.jww.walkingtravelers.objects.UserObject
 import com.jww.walkingtravelers.viewModel.SignInVM
 
 class SignInActivity : BaseActivity(), SignInCon {
@@ -20,7 +22,7 @@ class SignInActivity : BaseActivity(), SignInCon {
 
     override fun goSignUpActivity() {
         val intent = Intent(this, SignUpActivity::class.java)
-        this.startActivity(intent)
+        startActivityForResult(intent, Constants.REQUEST_ACTIVITY_SIGN_UP)
     }
 
 
@@ -29,5 +31,18 @@ class SignInActivity : BaseActivity(), SignInCon {
         val binding: ActivitySignInBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_sign_in)
         binding.vm = SignInVM(this)
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            Constants.REQUEST_ACTIVITY_SIGN_UP -> {
+                UserObject.userInfo?.let {
+                    finish()
+                }
+            }
+        }
     }
 }
