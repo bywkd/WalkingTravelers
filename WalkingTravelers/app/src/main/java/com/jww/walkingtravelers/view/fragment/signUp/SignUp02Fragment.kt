@@ -12,8 +12,6 @@ import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
 import com.jww.walkingtravelers.contract.SignUpCon
 import com.jww.walkingtravelers.databinding.FragmentSignUp02Binding
-import com.jww.walkingtravelers.model.UserLoginModel
-import com.jww.walkingtravelers.objects.UserObject
 import com.jww.walkingtravelers.view.activity.SignUpActivity
 import com.jww.walkingtravelers.viewModel.signUp.SignUp02VM
 
@@ -60,14 +58,22 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
         currentActivity.isEmail = false
     }
 
-    override fun onSignUpComplete(user: FirebaseUser) {
-        val userInfo = UserLoginModel()
-        userInfo.email = user.email.toString()
-        userInfo.uid = user.uid
-        UserObject.userInfo = userInfo
+    override fun onSignUpComplete(user: FirebaseUser, password: String) {
 
-        currentActivity.setResult(RESULT_OK)
-        currentActivity.finish()
+
+        val userMap: HashMap<String, Any> = hashMapOf()
+        userMap["uid"] = user.uid
+        userMap["email"] = user.email.toString()
+        userMap["password"] = password
+        userMap["gender"] = currentActivity.gender.toString()
+        userMap["year"] = currentActivity.year
+        userMap["month"] = currentActivity.month
+        userMap["day"] = currentActivity.day
+
+        binding.vm?.signUpUser(userMap)
+
+//        currentActivity.setResult(RESULT_OK)
+//        currentActivity.finish()
     }
 
 }
