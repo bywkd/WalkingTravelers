@@ -13,6 +13,6 @@ interface SignUpCon {
     interface SignUp02Con {
         fun onComplete()
         fun onBefore()
-        fun onSignUpComplete(user: FirebaseUser)
+        fun onSignUpComplete(user: FirebaseUser, password: String)
     }
 }

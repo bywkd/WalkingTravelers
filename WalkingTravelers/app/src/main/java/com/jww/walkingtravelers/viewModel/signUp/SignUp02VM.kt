@@ -3,11 +3,13 @@ package com.jww.walkingtravelers.viewModel.signUp
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.jww.walkingtravelers.contract.SignUpCon
+import com.jww.walkingtravelers.net.ApiStore
 import com.jww.walkingtravelers.utils.RegularUtil
 
 class SignUp02VM : ViewModel {
@@ -97,11 +99,32 @@ class SignUp02VM : ViewModel {
                 if (it.isSuccessful) {
                     val user = auth.currentUser
                     user?.let { userInfo ->
-                        contract.onSignUpComplete(userInfo)
+                        contract.onSignUpComplete(userInfo, password.get().toString())
                     }
                 } else {
                     Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    fun signUpUser(user: Map<String, Any>) {
+        ApiStore.addUser().document(user["uid"].toString()).set(user).addOnSuccessListener {
+            //            Log.d("Won", it.id)
+//            Log.d("Won", it.path)
+//            Log.d("Won", it.parent.toString())
+//            Log.d("Won", it.firestore.toString())
+//            Log.d("Won", it.firestore.app!!.name)
+//            Log.d("Won", it.firestore.app!!.persistenceKey)
+//            Log.d("Won", it.firestore.app!!.applicationContext.toString())
+//            Log.d("Won", it.firestore.app!!.options.toString())
+//            Log.d("Won", it.firestore.app.)
+//            it.get().result?.let { result ->
+//                Log.d("Won", result.toString())
+//            }
+            Log.d("Won","성공")
+        }.addOnFailureListener {
+            it.printStackTrace()
+        }
+
     }
 }
