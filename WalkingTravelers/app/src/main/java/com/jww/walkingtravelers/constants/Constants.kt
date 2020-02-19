@@ -8,13 +8,14 @@ class Constants {
 
 
         const val REQUEST_CAPTURE_IMAGE: Int = 8000
+        /*Activity request code*/
+        const val REQUEST_ACTIVITY_SIGN_UP: Int = 8100
         const val REQUEST_PERMISSION: Int = 8999
 
-        /*Activity request code*/
-        const val REQUEST_ACTIVITY_SIGN_UP: Int = 6000
+        /*Result code*/
+        const val RESULT_SIGN_UP:Int = 6000
 
         /*퍼미션*/
-
         const val INTENT_PERMISSION: String = "permission"
         val storagePermission = arrayListOf(
             Manifest.permission.READ_EXTERNAL_STORAGE,
