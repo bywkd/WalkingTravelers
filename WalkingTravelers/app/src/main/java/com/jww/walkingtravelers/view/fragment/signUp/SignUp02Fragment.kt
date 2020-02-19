@@ -1,6 +1,6 @@
 package com.jww.walkingtravelers.view.fragment.signUp
 
-import android.app.Activity.RESULT_OK
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.jww.walkingtravelers.R
 import com.jww.walkingtravelers.base.BaseFragment
+import com.jww.walkingtravelers.constants.Constants
 import com.jww.walkingtravelers.contract.SignUpCon
 import com.jww.walkingtravelers.databinding.FragmentSignUp02Binding
 import com.jww.walkingtravelers.view.activity.SignUpActivity
@@ -58,9 +59,7 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
         currentActivity.isEmail = false
     }
 
-    override fun onSignUpComplete(user: FirebaseUser, password: String) {
-
-
+    override fun fireBaseSignUpComplete(user: FirebaseUser, password: String) {
         val userMap: HashMap<String, Any> = hashMapOf()
         userMap["uid"] = user.uid
         userMap["email"] = user.email.toString()
@@ -70,10 +69,14 @@ class SignUp02Fragment : BaseFragment(), SignUpCon.SignUp02Con {
         userMap["month"] = currentActivity.month
         userMap["day"] = currentActivity.day
 
-        binding.vm?.signUpUser(userMap)
-
-//        currentActivity.setResult(RESULT_OK)
-//        currentActivity.finish()
+        binding.vm?.firebaseStoreAddUser(userMap)
     }
 
+    override fun fireStoreUserAddComplete(email: String, password: String) {
+        val intent = Intent()
+        intent.putExtra("email", email)
+        intent.putExtra("password", password)
+        currentActivity.setResult(Constants.RESULT_SIGN_UP, intent)
+        currentActivity.finish()
+    }
 }

@@ -6,8 +6,8 @@ import com.jww.walkingtravelers.WTApp
 
 class ApiStore {
     companion object {
-        fun addUser(): CollectionReference {
-            return WTApp().getDB().collection("user")
+        fun addUser(document:String): DocumentReference {
+            return WTApp().getDB().collection("user").document(document)
         }
     }
 }

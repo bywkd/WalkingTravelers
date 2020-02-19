@@ -44,6 +44,7 @@
                     android:id="@+id/et_email"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@={vm.email}"
                     app:layout_constraintEnd_toStartOf="@+id/btn_login"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_loginTEXT" />
@@ -52,6 +53,7 @@
                     android:id="@+id/et_password"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="@={vm.password}"
                     app:layout_constraintEnd_toStartOf="@+id/btn_login"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/et_email" />

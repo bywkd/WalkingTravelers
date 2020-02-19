@@ -99,7 +99,7 @@ class SignUp02VM : ViewModel {
                 if (it.isSuccessful) {
                     val user = auth.currentUser
                     user?.let { userInfo ->
-                        contract.onSignUpComplete(userInfo, password.get().toString())
+                        contract.fireBaseSignUpComplete(userInfo, password.get().toString())
                     }
                 } else {
                     Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
@@ -107,8 +107,8 @@ class SignUp02VM : ViewModel {
             }
     }
 
-    fun signUpUser(user: Map<String, Any>) {
-        ApiStore.addUser().document(user["uid"].toString()).set(user).addOnSuccessListener {
+    fun firebaseStoreAddUser(user: Map<String, Any>) {
+        ApiStore.addUser(user["uid"].toString()).set(user).addOnSuccessListener {
             //            Log.d("Won", it.id)
 //            Log.d("Won", it.path)
 //            Log.d("Won", it.parent.toString())
@@ -121,7 +121,8 @@ class SignUp02VM : ViewModel {
 //            it.get().result?.let { result ->
 //                Log.d("Won", result.toString())
 //            }
-            Log.d("Won","성공")
+            contract.fireStoreUserAddComplete(user.get("email").toString(),user.get("password").toString())
+            Log.d("Won", "성공")
         }.addOnFailureListener {
             it.printStackTrace()
         }
