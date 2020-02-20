@@ -44,8 +44,6 @@ class SignInVM : ViewModel {
     fun requestLogin(email: String, password: String) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
             if (it.isSuccessful) {
-                val user = auth.currentUser
-                Log.d("Won","성공")
                 contract.goMainActivity()
             } else {
                 Toast.makeText(context, it.exception.toString(), Toast.LENGTH_SHORT).show()
