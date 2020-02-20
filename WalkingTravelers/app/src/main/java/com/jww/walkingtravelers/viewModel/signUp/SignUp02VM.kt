@@ -122,7 +122,6 @@ class SignUp02VM : ViewModel {
 //                Log.d("Won", result.toString())
 //            }
             contract.fireStoreUserAddComplete(user.get("email").toString(),user.get("password").toString())
-            Log.d("Won", "성공")
         }.addOnFailureListener {
             it.printStackTrace()
         }

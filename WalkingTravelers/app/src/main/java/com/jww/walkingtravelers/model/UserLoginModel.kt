@@ -5,5 +5,7 @@ class UserLoginModel() {
     var email: String = ""
     var password: String = ""
     var gender: String = ""
-    var birthDay: String = ""
+    var year: Int = 0
+    var month: Int = 0
+    var day: Int = 0
 }
